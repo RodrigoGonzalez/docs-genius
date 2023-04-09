@@ -40,6 +40,13 @@ pre-commit = "^3.2.2"
 name = "cz_conventional_commits"
 version = "0.0.2"
 tag_format = "$version"
+version_files = [
+    "pyproject.toml:version",
+    "src/docs_genius/__init__.py:__version__",
+]
+update_changelog_on_bump = true
+changelog_file = "CHANGELOG.md"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
