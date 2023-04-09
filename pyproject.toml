@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "docs-genius"
-version = "0.0.1"
+version = "0.0.2"
 description = "A Python package to improve and enforce PEP 257 docstring conventions in code."
 authors = ["RodrigoGonzalez <r@rodrigo-gonzalez.com>"]
 license = "MIT"
