@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "docs-genius"
-version = "0.1.0"
+version = "0.0.1"
 description = "A Python package to improve and enforce PEP 257 docstring conventions in code."
 authors = ["RodrigoGonzalez <r@rodrigo-gonzalez.com>"]
 license = "MIT"
@@ -32,7 +32,14 @@ python = "^3.10"
 
 [tool.poetry.group.dev.dependencies]
 commitizen = "^2.42.1"
+pre-commit = "^3.2.2"
 
+
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.0.2"
+tag_format = "$version"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
