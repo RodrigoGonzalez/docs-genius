@@ -8,11 +8,24 @@ import click
 
 @click.command(name="hello-world")
 @click.option("--name", default="world", help="Whom to greet")
-def hello_world(name):
+def hello_world(name: str) -> None:
+    """
+    Simple CLI command that greets the user.
+
+    Parameters
+    ----------
+    name : str
+        The name of the person to greet.
+
+    Returns
+    -------
+    None
+    """
     click.echo(f"Hello {name}")
 
+
 @click.group()
-def entry_point():
+def entry_point() -> None:
     pass
 
 

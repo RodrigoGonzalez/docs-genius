@@ -1,0 +1,13 @@
+[MASTER]
+disable=duplicate-code,too-few-public-methods,too-many-arguments
+
+[MESSAGES CONTROL]
+disable=fixme,missing-module-docstring,missing-class-docstring,missing-function-docstring
+
+[DESIGN]
+max-attributes=12
+max-locals=20
+max-returns=6
+max-branches=12
+max-statements=50
+max-parents=12

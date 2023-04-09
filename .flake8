@@ -1,0 +1,49 @@
+[flake8]
+max-line-length = 100
+
+ignore =
+    # Line break occurred before a binary operator (W503)
+    # https://github.com/psf/black/issues/52
+    W503,
+    # Line too long (E501)
+    # 1. black does not format comments
+    #    https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#comments
+    # 2. long links in doc strings are an issue
+    E501
+    # flake8-builtins
+    # the likelihood of running into an issue when shadowing a buildin
+    # with a class attribute is very low
+    A003,
+    # flake8-bugbear
+    # fastapi recommends to use `Depend()` as an argument default.
+    # Unfortunately, exceptions are hardcoded in bugbear.
+    # https://github.com/PyCQA/flake8-bugbear/issues/62
+    B008,
+
+# pep8-naming
+classmethod-decorators =
+  classmethod,  # built-in
+  validator,  # pydantic
+  root_validator,  # pydantic
+
+enable-extensions=
+    G,  # flake8-logging-format
+
+per-file-ignores =
+    # star imports in `__init__.py` files are ok
+    */__init__.py: F401
+
+# Enables McCabe complexity checks
+# McCabe complexity checks, also known as cyclomatic complexity checks, are a
+# type of software metric that is used to measure the complexity of a program's
+# control flow.
+
+# The McCabe complexity metric is based on the number of independent paths
+# through the program's source code. It is calculated by counting the number
+# of decision points (such as loops or conditional statements) in the code and
+# adding 1 to the count. The result is the program's cyclomatic complexity,
+# which represents the number of independent paths that could be executed through
+# the program.
+max-complexity = 10
+
+exclude = .eggs,.git,.ipynb_checkpoints,.mypy_cache,.pytest_cache,.tox,.venv,__pycache__,build,docs
