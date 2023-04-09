@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "docs-genius"
+version = "0.1.0"
+description = "A Python package to improve and enforce PEP 257 docstring conventions in code."
+authors = ["RodrigoGonzalez <r@rodrigo-gonzalez.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/rodrigogonzalez/docs-genius"
+repository = "https://github.com/rodrigogonzalez/docs-genius"
+
+# Standard classifiers at https://pypi.org/classifiers/
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Typing :: Typed",
+]
+
+packages = [
+    {include = "docs_genius", from = "src"},
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
