@@ -150,6 +150,23 @@ lint-mypy-changed:  ## Run mypy on changed Python files & create report
 .PHONY: lint-mypy-report
 
 # =============================================================================
+# TESTING
+# =============================================================================
+
+##@ Testing
+
+unit-tests: ## run unit-tests with pytest
+	pytest --doctest-modules
+
+unit-tests-cov: ## run unit-tests with pytest and show coverage (terminal + html)
+	pytest --doctest-modules --cov=src --cov-report term-missing --cov-report=html
+
+unit-tests-cov-fail: ## run unit tests with pytest and show coverage (terminal + html) & fail if coverage too low & create files for CI
+	pytest --doctest-modules --cov=src --cov-report term-missing --cov-report=html --cov-fail-under=80 --junitxml=pytest.xml | tee pytest-coverage.txt
+
+.PHONY: unit-tests unit-tests-cov unit-tests-cov-fail
+
+# =============================================================================
 # BUILD & RELEASE
 # =============================================================================
 
