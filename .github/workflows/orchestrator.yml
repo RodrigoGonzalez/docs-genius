@@ -1,0 +1,15 @@
+name: Orchestrator
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  call-linting-pipeline:
+    name: Linting
+    uses: ./.github/workflows/lint.yml
+
+  call-testing-pipeline:
+    name: Testing
+    uses: ./.github/workflows/test.yml
