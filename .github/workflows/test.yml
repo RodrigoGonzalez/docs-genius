@@ -30,7 +30,7 @@ jobs:
 
       # install requirements (including testing dependencies)
       - name: Install requirements
-        run: poetry install --with test
+        run: poetry install --extras test
 
       # run unit tests
       - name: Run unit-tests

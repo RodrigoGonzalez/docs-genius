@@ -20,10 +20,10 @@ runs:
         python-version: ${{inputs.python-version}}
         cache: ${{inputs.cache}}
     - id: install-poetry
-      name: Install poetry
-      run: |
-        curl -sSL https://install.python-poetry.org | python3 -
-      shell: bash
+      uses: snok/install-poetry@v1.2
+      with:
+        virtualenvs-create: true
+        virtualenvs-in-project: true
     - id: create-virtual-environment
       name: Create virtual environment
       run: poetry install
