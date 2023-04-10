@@ -15,10 +15,8 @@ jobs:
         run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
         shell: bash
       - name: Check workflow files
-        with:
-          python-version: '3.10'
-          cache: 'poetry'
         run: ./actionlint -color
+        shell: bash
 
   lint-cruft:
     name: Check if automatic project update was successful
