@@ -6,7 +6,6 @@ inputs:
     required: false
     description: 'Python version'
     default: '3.10'
-
   cache:
     required: false
     description: 'Cache option'
