@@ -1,0 +1,30 @@
+name: 'Setup Python + Poetry environment'
+description: 'Setup Python + Poetry environment'
+
+inputs:
+  python-version:
+    required: false
+    description: 'Python version'
+    default: '3.10'
+  cache:
+    required: false
+    description: 'Cache option'
+    default: 'poetry'
+outputs: {}
+runs:
+  using: 'composite'
+  steps:
+    - id: setup-python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{inputs.python-version}}
+        cache: ${{inputs.cache}}
+    - id: install-poetry
+      name: Install poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+      shell: bash
+    - id: create-virtual-environment
+      name: Create virtual environment
+      run: poetry install
+      shell: bash
