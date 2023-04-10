@@ -50,10 +50,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-poetry-
 
-      # install requirements (including lint and dev dependencies)
-      - name: Install requirements
-        run: poetry install --extras lint --extras dev
-
       # run linters
       - name: Run linters
         run: |
