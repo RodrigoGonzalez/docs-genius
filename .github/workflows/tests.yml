@@ -1,0 +1,54 @@
+name: Testing
+
+on:
+  pull_request:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      # check-out repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+
+      # install poetry
+      - name: Install poetry
+        uses: ./.github/actions/python-poetry-env
+        with:
+          python-version: '3.10'
+          # cache: 'poetry'
+
+      # run unit tests
+      - name: Run unit-tests
+        run: |
+          set -o pipefail
+          poetry run make unit-tests-cov-fail
+
+      - name: Pytest coverage comment
+        if: ${{ success() && github.event_name == 'pull_request' }}
+        id: coverageComment
+        uses: MishaKav/pytest-coverage-comment@main
+        with:
+          github-token: ${{ secrets.ALTERNATIVE_GITHUB_TOKEN }}
+          title: Coverage Report
+          pytest-coverage-path: pytest-coverage.txt
+          junitxml-path: pytest.xml
+
+
+      - name: Pytest coverage GitHub summary
+        if: ${{ success() && github.event_name == 'pull_request' }}
+        run: |
+          set -o pipefail
+          {
+            printf '# Coverage report\n'
+            printf '```\n'
+            cat pytest-coverage.txt
+            printf '```\n'
+            printf '\n\n\n'
+            printf '%s' "${{ steps.coverageComment.outputs.coverageHtml }}"
+          } >> "$GITHUB_STEP_SUMMARY"
