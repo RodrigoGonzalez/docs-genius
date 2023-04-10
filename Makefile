@@ -94,7 +94,14 @@ pre-commit-tool:  ## Manually run a single pre-commit hook (e.g. `make pre-commi
 	poetry run pre-commit run $(TOOL) $(ARGS) -c .pre-commit-config.yaml
 	#poetry run pre-commit run $(TOOL) --all-files -c .pre-commit-config.yaml
 
-.PHONY: pre-commit pre-commit-tool
+# https://commitizen-tools.github.io/commitizen/bump/
+commit:  ## Commit changes
+	poetry run cz commit
+
+bump:  ## Bump version and update changelog
+	poetry run cz bump --changelog
+
+.PHONY: pre-commit pre-commit-tool commit
 
 # =============================================================================
 # FORMATTING
