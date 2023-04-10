@@ -118,7 +118,7 @@ pretty = true
 
 
 [tool.pytest.ini_options]
-testpaths = ["src", "tests"]
+testpaths = ["tests"]
 
 [tool.coverage.report]
 exclude_lines = [
