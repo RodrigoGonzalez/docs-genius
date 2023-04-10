@@ -141,7 +141,7 @@ lint-mypy: ## Run mypy (static-type checker)
 	$(MAKE) pre-commit-tool TOOL=mypy
 
 lint-mypy-report: ## Run mypy & create report
-	poetry run mypy --install-types --non-interactive --verbose --html-report ./.mypy_html_report src tests
+	poetry run mypy --install-types --non-interactive --verbose --html-report ./.mypy_html_report src
 	#$(MAKE) pre-commit-tool TOOL=mypy ARGS="--html-report ./mypy_html"
 
 lint-mypy-changed:  ## Run mypy on changed Python files & create report
