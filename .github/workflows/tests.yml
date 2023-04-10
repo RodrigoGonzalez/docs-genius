@@ -40,14 +40,15 @@ jobs:
           junitxml-path: pytest.xml
 
 
-      # add content to GitHub summary
       - name: Pytest coverage GitHub summary
         if: ${{ success() && github.event_name == 'pull_request' }}
         run: |
           set -o pipefail
-          printf '# Coverage report\n' >> "$GITHUB_STEP_SUMMARY"
-          printf '```\n' >> "$GITHUB_STEP_SUMMARY"
-          cat pytest-coverage.txt >> "$GITHUB_STEP_SUMMARY"
-          printf '```\n' >> "$GITHUB_STEP_SUMMARY"
-          printf '\n\n\n'
-          printf '%s' "${{ steps.coverageComment.outputs.coverageHtml }}" >> "$GITHUB_STEP_SUMMARY"
+          {
+            printf '# Coverage report\n'
+            printf '```\n'
+            cat pytest-coverage.txt
+            printf '```\n'
+            printf '\n\n\n'
+            printf '%s' "${{ steps.coverageComment.outputs.coverageHtml }}"
+          } >> "$GITHUB_STEP_SUMMARY"
