@@ -10,7 +10,7 @@ repos:
       - id: check-yaml
       - id: debug-statements
       - id: pretty-format-json
-        args: [--autofix --no-sort-keys]
+        args: [--autofix, --no-sort-keys]
       - id: check-json
       - id: name-tests-test
         args: [--pytest-test-first]
@@ -25,12 +25,22 @@ repos:
         language: system
         types: [ python ]
       - id: isort
-        name: isort
+        name: isort-format
+        entry: poetry run isort --settings-path pyproject.toml
+        language: system
+        types: [python]
+      - id: isort-check
+        name: isort-lint
         entry: poetry run isort --settings-path pyproject.toml
         language: system
         types: [python]
       - id: black
-        name: black
+        name: black-format
+        entry: poetry run black src tests
+        language: system
+        types: [python]
+      - id: black-check
+        name: black-lint
         entry: poetry run black src tests
         language: system
         types: [python]

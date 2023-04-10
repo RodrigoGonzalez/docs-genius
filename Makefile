@@ -90,8 +90,8 @@ pre-commit:  ## Manually run all pre-commit hooks
 	poetry run pre-commit run -c .pre-commit-config.yaml
 	#poetry run pre-commit run --all-files -c .pre-commit-config.yaml
 
-pre-commit-tool:  ## Manually run a single pre-commit hook (e.g. `make pre-commit-tool TOOL=black ARGS="--check"`)
-	poetry run pre-commit run $(TOOL) $(ARGS) -c .pre-commit-config.yaml
+pre-commit-tool:  ## Manually run a single pre-commit hook (e.g. `make pre-commit-tool TOOL=black`)
+	poetry run pre-commit run --hook-stage manual $(TOOL) -c .pre-commit-config.yaml
 	#poetry run pre-commit run $(TOOL) --all-files -c .pre-commit-config.yaml
 
 # https://commitizen-tools.github.io/commitizen/bump/
@@ -136,10 +136,10 @@ lint: lint-black lint-isort lint-flake8 lint-mypy ## Run all linters
 .PHONY: lint lint-black lint-isort lint-flake8 lint-mypy
 
 lint-black: ## Run black in linting mode
-	$(MAKE) pre-commit-tool TOOL=black ARGS="--check"
+	$(MAKE) pre-commit-tool TOOL=black-check
 
 lint-isort: ## Run isort in linting mode
-	$(MAKE) pre-commit-tool TOOL=isort ARGS="--check"
+	$(MAKE) pre-commit-tool TOOL=isort-check
 
 lint-flake8: ## Run flake8 (linter)
 	$(MAKE) pre-commit-tool TOOL=flake8
