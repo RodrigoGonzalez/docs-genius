@@ -34,11 +34,15 @@ repos:
         entry: poetry run isort --settings-path pyproject.toml
         language: system
         types: [python]
+
       - id: black
         name: black-format
         entry: poetry run black src tests
+        args: [--config=pyproject.toml]
         language: system
         types: [python]
+        stages: [commit, manual]
+
       - id: black-check
         name: black-lint
         entry: poetry run black src tests
@@ -62,11 +66,13 @@ repos:
         entry: poetry run flake8 src tests
         language: system
         types: [python]
+
 -   repo: https://github.com/gvanderest/pylama-pre-commit
     rev: 0.1.2
     hooks:
     - id: pylama
       args: [--verbose]
+
 -   repo: https://github.com/sondrelg/pep585-upgrade
     rev: v1.0
     hooks:
