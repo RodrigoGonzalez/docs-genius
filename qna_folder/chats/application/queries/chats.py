@@ -3,7 +3,6 @@ from dataclasses import dataclass
 from datetime import datetime
 
 from foundation.value_objects import Money
-
 from qna.chats.domain.value_objects import ChatsId
 
 

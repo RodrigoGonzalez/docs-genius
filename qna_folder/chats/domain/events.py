@@ -2,7 +2,6 @@ from dataclasses import dataclass
 
 from foundation.events import Event
 from foundation.value_objects import Money
-
 from qna.chats.domain.value_objects import ChatsId
 
 
